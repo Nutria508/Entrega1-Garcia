@@ -1,0 +1,67 @@
+{% extends "blog/index.html" %}
+{% load static %}
+{% block title %}
+Agregar blog 
+{% endblock %}
+
+{% block CuerpoDelTemplate %}
+<link rel="stylesheet" type="text/css" href="{% static 'blog/styles/bootstrap4/bootstrap.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'blog/plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'blog/plugins/video-js/video-js.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'blog/styles/blog.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'blog/styles/blog_responsive.css' %}">
+
+	
+	<!-- Home -->
+
+	<div class="home">
+		<div class="breadcrumbs_container">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="breadcrumbs">
+							<ul>
+								<li><a href=".">Inicio</a></li>
+								<li><a href="users">Usuarios</a></li>
+                                <li>Nuevo Usuario</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>			
+	</div>
+
+	<!-- Blog -->
+
+	<div class="blog">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="blog_post_container">
+                        <form action="/blog/users" method="POST"> 
+							{% csrf_token %}
+                            <p>Nombre: <input type="text" name="name"></p>
+                            <p>Apellido: <input type="text" name="last_name"></p>
+                            <p>Email: <input type="text" name="email"></p>
+                            <p>contraseña: <input type="text" name="password"></p>
+                            <div class="col text-center">
+                                <input type="submit" class="btn btn-primary" value="Crear Usuario">
+                            </div>
+                        </form>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<script src="{% static 'blog/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'blog/styles/bootstrap4/popper.js' %}"></script>
+<script src="{% static 'blog/styles/bootstrap4/bootstrap.min.js' %}"></script>
+<script src="{% static 'blog/plugins/easing/easing.js' %}"></script>
+<script src="{% static 'blog/plugins/masonry/masonry.js' %}"></script>
+<script src="{% static 'blog/plugins/video-js/video.min.js' %}"></script>
+<script src="{% static 'blog/plugins/parallax-js-master/parallax.min.js' %}"></script>
+<script src="{% static 'blog/js/blog.js' %}"></script>
+
+{% endblock %}

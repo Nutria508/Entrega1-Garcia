@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	{% load static %}
+
+	<title>{% block title %} {% endblock %}</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="Proyecto 1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/x-icon" href="{% static 'blog/assets/kqp-32.ico' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/styles/bootstrap4/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/plugins/OwlCarousel2-2.2.1/animate.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/styles/main_styles.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/styles/responsive.css' %}">
+
+</head>
+
+<div class="super_container">
+
+	<!-- Header -->
+
+	<header class="header">
+			
+		<!-- Top Bar -->
+		<div class="top_bar">
+			<div class="top_bar_container">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
+								
+								<div class="top_bar_login ml-auto">
+									<div class="login_button"><a href="#">Iniciar sesión</a></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>				
+		</div>
+		
+		<!-- Header Content -->
+		<div class="header_container">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="header_content d-flex flex-row align-items-center justify-content-start">
+							<nav class="main_nav_contaner ml-auto">
+								<ul class="main_nav">
+									<li><a href=".">Inicio</a></li>
+									<li><a href="users">Usuarios</a></li>
+									<li><a href="request">Pedidos</a></li>
+									<li><a href="blogs">Blogs</a></li>
+									<li><a href="#">Contacto</a></li>
+								</ul>
+								
+								<div class="search_button"><i class="fa fa-search" aria-hidden="true"></i></div>
+							
+								<!-- Hamburger -->
+								
+								<div class="hamburger menu_mm">
+									<i class="fa fa-bars menu_mm" aria-hidden="true"></i>
+								</div>
+								
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Header Search Panel -->
+		<div class="header_search_container">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="header_search_content d-flex flex-row align-items-center justify-content-end">
+							<form action="#" class="header_search_form">
+								<input type="search" class="search_input" placeholder="Search" required="required">
+								<button class="header_search_button d-flex flex-column align-items-center justify-content-center">
+									<i class="fa fa-search" aria-hidden="true"></i>
+								</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>			
+		</div>
+			
+	</header>	
+</div>
+
+<body>
+
+	<!-- Home -->
+
+	{% block CuerpoDelTemplate %}
+
+	{% endblock %}
+</body>
+	<!-- Footer -->
+
+	<footer class="footer">
+		<div class="footer_background" style="background-image:url(images/footer_background.png)"></div>
+		<div class="container">
+			<div class="row footer_row">
+				<div class="col">
+					<div class="footer_content">
+						<div class="row">
+
+							<div class="col-lg-3 footer_col">
+					
+								<!-- Footer About -->
+								<div class="footer_section footer_about">
+									<div class="footer_logo_container">
+											<div class="footer_logo_text">KQ<span>P</span></div>
+									</div>
+									<div class="footer_about_text">
+										<p>Lealtad honor y tradición.</p>
+									</div>
+									<div class="footer_social">
+										<ul>
+											<li><a href="https://www.facebook.com/"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+											<li><a href="https://www.google.com.ar/"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+											<li><a href="https://www.instagram.com/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+											<li><a href="https://twitter.com/"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+										</ul>
+									</div>
+								</div>
+								
+							</div>
+
+							<div class="col-lg-3 footer_col">
+					
+								<!-- Footer Contact -->
+								<div class="footer_section footer_contact">
+									<div class="footer_title">Contactos</div>
+									<div class="footer_contact_info">
+										<ul>
+											<li>Email: grupo12@mail.com</li>
+											<li>Telefono:  +(54) 9 11 6666 9696</li>
+											<li>Horario: Sabados de 15 a 20 hs</li>
+											<li>Av. Rivadavia 555 CABA,Bs As, Argentina</li>
+										</ul>
+									</div>
+								</div>
+								
+							</div>
+
+							<div class="col-lg-3 footer_col">
+					
+								<!-- Footer links -->
+								<div class="footer_section footer_links">
+									<div class="footer_title"></div>
+									<div class="footer_links_container">
+										<ul>
+											<li><a href=".">Inicio</a></li>
+											<li><a href="request">Pedidos</a></li>
+											<li><a href="#">Contacto</a></li>
+											<li><a href="blogs">Blogs</a></li>
+											<li><a href="users">usuarios</a></li>
+										</ul>
+									</div>
+								</div>	
+							</div>
+							<div class="col-lg-3 footer_col clearfix">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+</div>
+
+<script src="{% static 'blog/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'blog/styles/bootstrap4/popper.js' %}"></script>
+<script src="{% static 'blog/styles/bootstrap4/bootstrap.min.js' %}"></script>
+<script src="{% static 'blog/plugins/greensock/TweenMax.min.js' %}"></script>
+<script src="{% static 'blog/plugins/greensock/TimelineMax.min.js' %}"></script>
+<script src="{% static 'blog/plugins/scrollmagic/ScrollMagic.min.js' %}"></script>
+<script src="{% static 'blog/plugins/greensock/animation.gsap.min.js' %}"></script>
+<script src="{% static 'blog/plugins/greensock/ScrollToPlugin.min.js' %}"></script>
+<script src="{% static 'blog/plugins/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
+<script src="{% static 'blog/plugins/easing/easing.js' %}"></script>
+<script src="{% static 'blog/plugins/parallax-js-master/parallax.min.js' %}"></script>
+<script src="{% static 'blog/js/custom.js' %}"></script>
+
+</html>
