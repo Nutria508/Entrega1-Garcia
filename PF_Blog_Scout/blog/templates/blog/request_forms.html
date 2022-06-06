@@ -1,4 +1,4 @@
-{% extends "blog/index.html" %}
+{% extends "index.html" %}
 {% load static %}
 {% block title %}
 Nuevo pedido
@@ -21,8 +21,8 @@ Nuevo pedido
 					<div class="col">
 						<div class="breadcrumbs">
 							<ul>
-								<li><a href=".">Inicio</a></li>
-								<li><a href="request">Pedidos</a></li>
+								<li><a href="{% url 'Home' %}">Inicio</a></li>
+								<li><a href="{% url 'blog:Request' %}">Pedidos</a></li>
                                 <li>Nuevo Pedido</li>
 							</ul>
 						</div>
@@ -39,12 +39,12 @@ Nuevo pedido
 			<div class="row">
 				<div class="col">
 					<div class="blog_post_container">
-                        <form action="/blog/request" method="POST">
-                            {% csrf_token %}
-                            <p>Pedido: <input type="text" name="text"></p>
-                            <p>dia del pedido: <input type="text" name="date"></p>
+                        <form action="/blog/request-django-forms" method="POST">{% csrf_token %}
+                            <table>
+								{{request_form.as_table}}
+							</table>
                             <div class="col text-center">
-                                <input type="submit" class="btn btn-primary" value="Crear blog">
+                                <input type="submit" class="btn btn-primary" value="Crear Pedido">
                             </div>
                         </form>
                     </div>

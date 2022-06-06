@@ -1,14 +1,17 @@
 from django.shortcuts import render
 from django.db.models import Q
 from django.forms.models import model_to_dict
+from django.contrib.auth.decorators import login_required
 
 from blog.models import Blog, User, Request
 from blog.forms import BlogForm,UserForm,RequestForm
 # Create your views here.
 
+from django.shortcuts import redirect
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import login, logout, authenticate
+from blog.forms import UserRegisterForm
 
-def index(request):
-    return render(request, "blog/home.html")
 
 
 
@@ -28,6 +31,21 @@ def blogs(request):
     )
 
 
+def blog(request, pk: int):
+    blog = Blog.objects.get(pk=pk)
+
+    context_dict = {
+        'blog': blog
+    }
+
+    return render(
+        request=request,
+        context=context_dict,
+        template_name="blog/blog_single.html"
+    )
+
+
+@login_required
 def blog_forms_django(request):
     if request.method == 'POST':
         blog_form = BlogForm(request.POST)
@@ -80,7 +98,7 @@ def request(request):
 
 
 
-
+@login_required
 def request_forms_django(request):
     if request.method == 'POST':
         request_form = RequestForm(request.POST)
@@ -89,9 +107,9 @@ def request_forms_django(request):
             new_request = Request(
                 text=data['text'],
                 date=data['date'],
-                )
+                votes=1
+            )
             new_request.save()
-
             requests = Request.objects.all()
             context_dict = {
                 'requests': requests
@@ -101,7 +119,6 @@ def request_forms_django(request):
                 context=context_dict,
                 template_name="blog/request.html"
             )
-
     request_form = RequestForm(request.POST)
     context_dict = {
         'request_form': request_form
@@ -112,6 +129,14 @@ def request_forms_django(request):
         template_name='blog/request_forms.html'
     )
 
+@login_required
+def vote_request(request, pk: int):
+    request1 = Request.objects.get(pk=pk)
+    if request1 is not None:
+        request1.votes += 1
+        request1.save()
+        return redirect("blog:Request")
+        
 
 
 ##    USERS
@@ -130,7 +155,7 @@ def users(request):
     )
 
 
-
+@login_required
 def user_forms_django(request):
     if request.method == 'POST':
         user_form = UserForm(request.POST)
@@ -181,3 +206,54 @@ def search(request):
     context=context_dict,
     template_name="blog/blogs.html",
     )
+
+
+def register(request):
+    if request.method == 'POST':
+        # form = UserCreationForm(request.POST)
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(
+                request=request,
+                context={"mensaje": "Usuario Registrado satisfactoriamente."},
+                template_name="blog/login.html",
+            )
+    # form = UserCreationForm()
+    form = UserRegisterForm()
+    return render(
+        request=request,
+        context={"form":form},
+        template_name="blog/register.html",
+    )
+
+
+def login_request(request):
+    if request.method == "POST":
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect("Home")
+        else:
+            template_name = "blog/login.html"
+        return render(
+            request=request,
+            context={'form': form},
+            template_name=template_name,
+        )
+
+    form = AuthenticationForm()
+    return render(
+        request=request,
+        context={'form': form},
+        template_name="blog/login.html",
+    )
+
+
+def logout_request(request):
+      logout(request)
+      return redirect("Home")

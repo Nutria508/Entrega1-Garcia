@@ -1,0 +1,28 @@
+{% extends "index.html" %}
+{% load static %}
+{% block title %}
+Registrarse
+{% endblock %}
+
+{% block CuerpoDelTemplate %}
+
+
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+
+<center><h2>Registro</h2></center>
+<hr></hr>
+
+{% if form.errors %}
+<p style="color: red">Por favor diligenciar la forma completa.</p>
+{% endif %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Registrar Usuario</button>
+</form>
+
+{% endblock %}

@@ -35,7 +35,11 @@
 							<div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
 								
 								<div class="top_bar_login ml-auto">
-									<div class="login_button"><a href="#">Iniciar sesión</a></div>
+									{% if user.is_authenticated %}
+										<div class="login_button"><a href="{% url 'blog:user-logout' %}">Cerrar sesión</a></div>
+									{% else %}
+										<div class="login_button"><a href="{% url 'blog:user-login' %}">Iniciar sesión</a></div>
+									{% endif %}
 								</div>
 							</div>
 						</div>
@@ -52,53 +56,26 @@
 						<div class="header_content d-flex flex-row align-items-center justify-content-start">
 							<nav class="main_nav_contaner ml-auto">
 								<ul class="main_nav">
-									<li><a href=".">Inicio</a></li>
-									<li><a href="users">Usuarios</a></li>
-									<li><a href="request">Pedidos</a></li>
-									<li><a href="blogs">Blogs</a></li>
+
+									<li><a href="{% url 'Home' %}">Inicio</a></li>
+									<li><a href="{% url 'About' %}">Nosotros</a></li>
+									<li><a href="{% url 'blog:Request' %}">Pedidos</a></li>
+									<li><a href="{% url 'blog:Blogs' %}">Blogs</a></li>
 									<li><a href="#">Contacto</a></li>
 								</ul>
-								
-								<div class="search_button"><i class="fa fa-search" aria-hidden="true"></i></div>
-							
-								<!-- Hamburger -->
-								
-								<div class="hamburger menu_mm">
-									<i class="fa fa-bars menu_mm" aria-hidden="true"></i>
-								</div>
-								
 							</nav>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		
-		<!-- Header Search Panel -->
-		<div class="header_search_container">
-			<div class="container">
-				<div class="row">
-					<div class="col">
-						<div class="header_search_content d-flex flex-row align-items-center justify-content-end">
-							<form action="#" class="header_search_form">
-								<input type="search" class="search_input" placeholder="Search" required="required">
-								<button class="header_search_button d-flex flex-column align-items-center justify-content-center">
-									<i class="fa fa-search" aria-hidden="true"></i>
-								</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>			
-		</div>
-			
+		</div>	
 	</header>	
 </div>
 
 <body>
 
 	<!-- Home -->
-
+	
 	{% block CuerpoDelTemplate %}
 
 	{% endblock %}
@@ -106,7 +83,7 @@
 	<!-- Footer -->
 
 	<footer class="footer">
-		<div class="footer_background" style="background-image:url(images/footer_background.png)"></div>
+		<div class="footer_background"></div>
 		<div class="container">
 			<div class="row footer_row">
 				<div class="col">
@@ -159,11 +136,11 @@
 									<div class="footer_title"></div>
 									<div class="footer_links_container">
 										<ul>
-											<li><a href=".">Inicio</a></li>
-											<li><a href="request">Pedidos</a></li>
-											<li><a href="#">Contacto</a></li>
-											<li><a href="blogs">Blogs</a></li>
-											<li><a href="users">usuarios</a></li>
+											<li><a href="{% url 'Home' %}">Inicio</a></li>
+											<li><a href="{% url 'About' %}">Nosotros</a></li>
+											<li><a href="{% url 'blog:Request' %}">Pedidos</a></li>
+											<li><a href="{% url 'blog:Blogs' %}">Blogs</a></li>
+											<li><a href="{% url 'blog:users' %}">usuarios</a></li>
 										</ul>
 									</div>
 								</div>	

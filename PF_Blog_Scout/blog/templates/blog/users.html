@@ -1,7 +1,7 @@
 
 
 
-{% extends "blog/index.html" %}
+{% extends "index.html" %}
 {% load static %}
 {% block title %}
 Usuarios
@@ -37,12 +37,13 @@ Usuarios
 		</div>			
 	</div>
 
-	<!-- Blog -->
-	<div class="row">
-		<div class="col text-center">
-			<div class="load_more trans_200"><a href="user-django-forms">Nuevo usuario</a></div>
+	{% if user.is_authenticated %}
+		<div class="row">
+			<div class="col text-center">
+				<div class="load_more trans_200"><a href="user-django-forms">Nuevo usuario</a></div>
+			</div>
 		</div>
-	</div>
+	{% endif %}
 
 	<div class="blog">
 		<div class="container">

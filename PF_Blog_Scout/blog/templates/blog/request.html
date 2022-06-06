@@ -1,7 +1,6 @@
 
 
-
-{% extends "blog/index.html" %}
+{% extends "index.html" %}
 {% load static %}
 {% block title %}
 Pedidos 
@@ -27,7 +26,7 @@ Pedidos
 					<div class="col">
 						<div class="breadcrumbs">
 							<ul>
-								<li><a href=".">Inicio</a></li>
+								<li><a href="{% url 'Home' %}">Inicio</a></li>
 								<li>Pedidos</li>
 							</ul>
 						</div>
@@ -36,14 +35,16 @@ Pedidos
 			</div>
 		</div>			
 	</div>
-
-	<!-- Blog -->
+	{% if user.is_authenticated %}
+	
 	<div class="row">
 		<div class="col text-center">
 			<div class="load_more trans_200"><a href="request-django-forms">Nuevo pedido</a></div>
 		</div>
 	</div>
-	
+	{% endif %}
+
+
 	<div class="blog">
 		<div class="container">
 			<div class="row">
@@ -53,6 +54,14 @@ Pedidos
 							<ul>
 								Pedido: {{request_1.text}}
 								-- Fecha: {{request_1.date}}
+								-- Votos: {{request_1.votes}}
+								{% if user.is_authenticated %}
+        							|
+									<a href="{% url 'blog:request-vote' request_1.id %}">
+										<i class="fa fa-plus" style="color: rgb(0, 0, 190);"> </i>
+									</a>
+									|
+								{% endif %}
 							</ul>
 						{% endfor %}
                     </div>

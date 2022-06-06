@@ -1,4 +1,4 @@
-{% extends "blog/index.html" %}
+{% extends "index.html" %}
 {% load static %}
 {% block title %}
 Agregar blog 
@@ -21,8 +21,8 @@ Agregar blog
 					<div class="col">
 						<div class="breadcrumbs">
 							<ul>
-								<li><a href=".">Inicio</a></li>
-								<li><a href="blogs">Blog</a></li>
+								<li><a href="{% url 'Home' %}">Inicio</a></li>
+								<li><a href="{% url 'blog:Blogs' %}">Blog</a></li>
                                 <li>Blog Nuevo</li>
 							</ul>
 						</div>
@@ -39,14 +39,12 @@ Agregar blog
 			<div class="row">
 				<div class="col">
 					<div class="blog_post_container">
-                        <form action="/blog/blogs" method="POST">
+                        <form action="/blog/blog-django-forms" method="POST">
                             {% csrf_token %}
-                            <p>Título: <input type="text" name="title"></p>
-                            <p>Subtitulo: <input type="text" name="subtitle"></p>
-                            <p>Autor: <input type="text" name="autor"></p>
-                            <p>Texto: <input type="text" name="text"></p>
-                            <p>dia de publicación: <input type="text" name="post_date"></p>
-                            <div class="col text-center">
+                            <table>
+								{{blog_form.as_table}}
+							</table>
+							<div class="col text-center">
                                 <input type="submit" class="btn btn-primary" value="Crear blog">
                             </div>
                         </form>
