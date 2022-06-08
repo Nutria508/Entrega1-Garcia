@@ -1,16 +1,14 @@
 from django.shortcuts import render
 from django.db.models import Q
-from django.forms.models import model_to_dict
+
 from django.contrib.auth.decorators import login_required
 
-from blog.models import Blog, User, Request
+from blog.models import Blog, Request
 from blog.forms import BlogForm,UserForm,RequestForm
 # Create your views here.
 
 from django.shortcuts import redirect
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.contrib.auth import login, logout, authenticate
-from blog.forms import UserRegisterForm
+
 
 
 
@@ -141,55 +139,55 @@ def vote_request(request, pk: int):
 
 ##    USERS
 
-def users(request):
-    users = User.objects.all()
-
-    context_dict = {
-        'users': users
-    }
-
-    return render(
-        request=request,
-        context=context_dict,
-        template_name="blog/users.html"
-    )
-
-
-@login_required
-def user_forms_django(request):
-    if request.method == 'POST':
-        user_form = UserForm(request.POST)
-        if user_form.is_valid():
-            data = user_form.cleaned_data
-            new_user = User(
-                name=data['name'],
-                last_name=data['last_name'],
-                email=data['email'],
-                password=data['password'],
-                )
-            new_user.save()
-
-            users = Blog.objects.all()
-            context_dict = {
-                'users': users
-            }
-            return render(
-                request=request,
-                context=context_dict,
-                template_name="blog/users.html"
-            )
-
-    user_form = UserForm(request.POST)
-    context_dict = {
-        'user_form': user_form
-    }
-    return render(
-        request=request,
-        context=context_dict,
-        template_name='blog/user_form.html'
-    )
-
-
+#def users(request):
+#    users = User.objects.all()
+#
+#    context_dict = {
+#        'users': users
+#    }
+#
+#    return render(
+#        request=request,
+#        context=context_dict,
+#        template_name="blog/users.html"
+#    )
+#
+#
+#@login_required
+#def user_forms_django(request):
+#    if request.method == 'POST':
+#        user_form = UserForm(request.POST)
+#        if user_form.is_valid():
+#            data = user_form.cleaned_data
+#            new_user = User(
+#                name=data['name'],
+#                last_name=data['last_name'],
+#                email=data['email'],
+#                password=data['password'],
+#                )
+#            new_user.save()
+#
+#            users = Blog.objects.all()
+#            context_dict = {
+#                'users': users
+#            }
+#            return render(
+#                request=request,
+#                context=context_dict,
+#                template_name="blog/users.html"
+#            )
+#
+#    user_form = UserForm(request.POST)
+#    context_dict = {
+#        'user_form': user_form
+#    }
+#    return render(
+#        request=request,
+#        context=context_dict,
+#        template_name='blog/user_form.html'
+#    )
+#
+#
 def search(request):
     context_dict = dict()
     if request.GET['all_search']:
@@ -207,53 +205,3 @@ def search(request):
     template_name="blog/blogs.html",
     )
 
-
-def register(request):
-    if request.method == 'POST':
-        # form = UserCreationForm(request.POST)
-        form = UserRegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return render(
-                request=request,
-                context={"mensaje": "Usuario Registrado satisfactoriamente."},
-                template_name="blog/login.html",
-            )
-    # form = UserCreationForm()
-    form = UserRegisterForm()
-    return render(
-        request=request,
-        context={"form":form},
-        template_name="blog/register.html",
-    )
-
-
-def login_request(request):
-    if request.method == "POST":
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect("Home")
-        else:
-            template_name = "blog/login.html"
-        return render(
-            request=request,
-            context={'form': form},
-            template_name=template_name,
-        )
-
-    form = AuthenticationForm()
-    return render(
-        request=request,
-        context={'form': form},
-        template_name="blog/login.html",
-    )
-
-
-def logout_request(request):
-      logout(request)
-      return redirect("Home")

@@ -1,4 +1,4 @@
-{% extends "index.html" %}
+{% extends "home/index.html" %}
 {% load static %}
 {% block title %}
 Iniciar Sesión
@@ -20,7 +20,7 @@ Iniciar Sesión
 <form action="" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <a class="btn2 btn-dark" href="{% url 'blog:user-register' %}" >Registo</a>
+    <a class="btn2 btn-dark" href="{% url 'user:user-register' %}" >Registo</a>
     <br></br>
     <button type="submit">Iniciar Sesión</button></center>
 </form>

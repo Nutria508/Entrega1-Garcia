@@ -11,12 +11,7 @@ urlpatterns = [
     path('request', views.request, name='Request'),
     path('request-django-forms', views.request_forms_django, name='RequestDjangoForms'),
     path('request/<int:pk>/vote', views.vote_request, name='request-vote'),
-    path('users', views.users, name='users'),
-    path('user-django-forms', views.user_forms_django, name='UserDjangoForms'),
+#    path('users', views.users, name='users'),
+#    path('user-django-forms', views.user_forms_django, name='UserDjangoForms'),
     path('search', views.search),
-    path('login', views.login_request, name='user-login'),
-    path('logout', views.logout_request, name='user-logout'),
-    path('register', views.register, name='user-register'),
-
-    #path('search', views.search, name='Busqueda'),
 ]

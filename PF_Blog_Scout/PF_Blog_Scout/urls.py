@@ -17,15 +17,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-from PF_Blog_Scout import views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name='Home'),
-    path('about', views.about_us, name='About'),
-
     path('blog/', include('blog.urls')),
+    path('home/', include('home.urls')),
+    path('user/', include('user.urls')),
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -9,14 +9,14 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="Proyecto 1">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/x-icon" href="{% static 'blog/assets/kqp-32.ico' %}" />
-	<link rel="stylesheet" type="text/css" href="{% static 'blog/styles/bootstrap4/bootstrap.min.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'blog/plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'blog/plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'blog/plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'blog/plugins/OwlCarousel2-2.2.1/animate.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'blog/styles/main_styles.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'blog/styles/responsive.css' %}">
+	<link rel="icon" type="image/x-icon" href="{% static 'home/assets/kqp-32.ico' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'home/styles/bootstrap4/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'home/plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'home/plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'home/plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'home/plugins/OwlCarousel2-2.2.1/animate.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'home/styles/main_styles.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'home/styles/responsive.css' %}">
 
 </head>
 
@@ -36,9 +36,9 @@
 								
 								<div class="top_bar_login ml-auto">
 									{% if user.is_authenticated %}
-										<div class="login_button"><a href="{% url 'blog:user-logout' %}">Cerrar sesión</a></div>
+										<div class="login_button"><a href="{% url 'user:user-logout' %}">Cerrar sesión</a></div>
 									{% else %}
-										<div class="login_button"><a href="{% url 'blog:user-login' %}">Iniciar sesión</a></div>
+										<div class="login_button"><a href="{% url 'user:user-login' %}">Iniciar sesión</a></div>
 									{% endif %}
 								</div>
 							</div>
@@ -57,8 +57,8 @@
 							<nav class="main_nav_contaner ml-auto">
 								<ul class="main_nav">
 
-									<li><a href="{% url 'Home' %}">Inicio</a></li>
-									<li><a href="{% url 'About' %}">Nosotros</a></li>
+									<li><a href="{% url 'home:Home' %}">Inicio</a></li>
+									<li><a href="{% url 'home:About' %}">Nosotros</a></li>
 									<li><a href="{% url 'blog:Request' %}">Pedidos</a></li>
 									<li><a href="{% url 'blog:Blogs' %}">Blogs</a></li>
 									<li><a href="#">Contacto</a></li>
@@ -136,11 +136,11 @@
 									<div class="footer_title"></div>
 									<div class="footer_links_container">
 										<ul>
-											<li><a href="{% url 'Home' %}">Inicio</a></li>
-											<li><a href="{% url 'About' %}">Nosotros</a></li>
+											<li><a href="{% url 'home:Home' %}">Inicio</a></li>
+											<li><a href="{% url 'home:About' %}">Nosotros</a></li>
 											<li><a href="{% url 'blog:Request' %}">Pedidos</a></li>
 											<li><a href="{% url 'blog:Blogs' %}">Blogs</a></li>
-											<li><a href="{% url 'blog:users' %}">usuarios</a></li>
+											<li><a href="#">usuarios</a></li>
 										</ul>
 									</div>
 								</div>	
@@ -155,17 +155,17 @@
 	</footer>
 </div>
 
-<script src="{% static 'blog/js/jquery-3.2.1.min.js' %}"></script>
-<script src="{% static 'blog/styles/bootstrap4/popper.js' %}"></script>
-<script src="{% static 'blog/styles/bootstrap4/bootstrap.min.js' %}"></script>
-<script src="{% static 'blog/plugins/greensock/TweenMax.min.js' %}"></script>
-<script src="{% static 'blog/plugins/greensock/TimelineMax.min.js' %}"></script>
-<script src="{% static 'blog/plugins/scrollmagic/ScrollMagic.min.js' %}"></script>
-<script src="{% static 'blog/plugins/greensock/animation.gsap.min.js' %}"></script>
-<script src="{% static 'blog/plugins/greensock/ScrollToPlugin.min.js' %}"></script>
-<script src="{% static 'blog/plugins/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
-<script src="{% static 'blog/plugins/easing/easing.js' %}"></script>
-<script src="{% static 'blog/plugins/parallax-js-master/parallax.min.js' %}"></script>
-<script src="{% static 'blog/js/custom.js' %}"></script>
+<script src="{% static 'home/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'home/styles/bootstrap4/popper.js' %}"></script>
+<script src="{% static 'home/styles/bootstrap4/bootstrap.min.js' %}"></script>
+<script src="{% static 'home/plugins/greensock/TweenMax.min.js' %}"></script>
+<script src="{% static 'home/plugins/greensock/TimelineMax.min.js' %}"></script>
+<script src="{% static 'home/plugins/scrollmagic/ScrollMagic.min.js' %}"></script>
+<script src="{% static 'home/plugins/greensock/animation.gsap.min.js' %}"></script>
+<script src="{% static 'home/plugins/greensock/ScrollToPlugin.min.js' %}"></script>
+<script src="{% static 'home/plugins/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
+<script src="{% static 'home/plugins/easing/easing.js' %}"></script>
+<script src="{% static 'home/plugins/parallax-js-master/parallax.min.js' %}"></script>
+<script src="{% static 'home/js/custom.js' %}"></script>
 
 </html>

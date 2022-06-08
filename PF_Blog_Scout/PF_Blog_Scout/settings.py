@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+    'home',
+    'user',
 ]
 
 MIDDLEWARE = [
@@ -57,9 +59,7 @@ ROOT_URLCONF = 'PF_Blog_Scout.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            "D:\Python\entrega1Garcia\PF_Blog_Scout\PF_Blog_Scout/templates\PF_Blog_Scout"
-        ],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

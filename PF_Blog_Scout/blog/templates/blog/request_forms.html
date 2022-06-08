@@ -1,15 +1,15 @@
-{% extends "index.html" %}
+{% extends "home/index.html" %}
 {% load static %}
 {% block title %}
 Nuevo pedido
 {% endblock %}
 
 {% block CuerpoDelTemplate %}
-<link rel="stylesheet" type="text/css" href="{% static 'blog/styles/bootstrap4/bootstrap.min.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'blog/plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'blog/plugins/video-js/video-js.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'blog/styles/blog.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'blog/styles/blog_responsive.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'home/styles/bootstrap4/bootstrap.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'home/plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'home/plugins/video-js/video-js.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'home/styles/blog.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'home/styles/blog_responsive.css' %}">
 
 	
 	<!-- Home -->
@@ -21,7 +21,7 @@ Nuevo pedido
 					<div class="col">
 						<div class="breadcrumbs">
 							<ul>
-								<li><a href="{% url 'Home' %}">Inicio</a></li>
+								<li><a href="{% url 'home:Home' %}">Inicio</a></li>
 								<li><a href="{% url 'blog:Request' %}">Pedidos</a></li>
                                 <li>Nuevo Pedido</li>
 							</ul>
@@ -53,13 +53,13 @@ Nuevo pedido
 		</div>
 	</div>
 
-<script src="{% static 'blog/js/jquery-3.2.1.min.js' %}"></script>
-<script src="{% static 'blog/styles/bootstrap4/popper.js' %}"></script>
-<script src="{% static 'blog/styles/bootstrap4/bootstrap.min.js' %}"></script>
-<script src="{% static 'blog/plugins/easing/easing.js' %}"></script>
-<script src="{% static 'blog/plugins/masonry/masonry.js' %}"></script>
-<script src="{% static 'blog/plugins/video-js/video.min.js' %}"></script>
-<script src="{% static 'blog/plugins/parallax-js-master/parallax.min.js' %}"></script>
-<script src="{% static 'blog/js/blog.js' %}"></script>
+<script src="{% static 'home/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'home/styles/bootstrap4/popper.js' %}"></script>
+<script src="{% static 'home/styles/bootstrap4/bootstrap.min.js' %}"></script>
+<script src="{% static 'home/plugins/easing/easing.js' %}"></script>
+<script src="{% static 'home/plugins/masonry/masonry.js' %}"></script>
+<script src="{% static 'home/plugins/video-js/video.min.js' %}"></script>
+<script src="{% static 'home/plugins/parallax-js-master/parallax.min.js' %}"></script>
+<script src="{% static 'home/js/blog.js' %}"></script>
 
 {% endblock %}
