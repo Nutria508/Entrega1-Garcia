@@ -12,3 +12,6 @@ Si el usuario es super usuario en la vista detallada del blog puede editar la im
 dentro de la pagina de pedidos se pueden ver los pedidos de blogs y si el usuario esta registrado puede agregar pedidos o votar pedidos. si el usuario es superusuario puede editar o eliminar pedidos
 Si el usuario esta registrado aparecerá el boton con su username donde podra ver y editar los datos de su cuenta
 Si el usuario es super usuario ademas le aparecerá el boton para ver, editar y eliminar todos los usuarios
+
+
+Se agrego el unitest. el link al video es https://drive.google.com/file/d/1YOwvnKNvGWjZdNg_Lw2_lZiMK8cyEqI5/view?usp=sharing
