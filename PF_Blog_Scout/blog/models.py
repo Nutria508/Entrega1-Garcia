@@ -1,21 +1,22 @@
 
 from cgitb import text
 from django.db import models
-
+from ckeditor.fields import RichTextField
+from django .contrib.auth.models import User
 
 # Create your models here.
 
 
 class Blog (models.Model):
-    title = models.CharField(max_length=20)
-    subtitle = models.CharField(max_length=30)
-    autor = models.CharField(max_length=30)
-    text = models.CharField(max_length=120)
+    title = models.CharField(max_length=40)
+    subtitle = models.CharField(max_length=60)
+    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    #text = models.TextField(blank=True, null=True)
+    text=RichTextField(blank=True, null=True)
     post_date = models.DateField()
-    image1= models.ImageField(upload_to='blogs',null=True,blank=True)
-    image2= models.ImageField(upload_to='blogs',null=True,blank=True)
+    image= models.ImageField(upload_to='pages/',null=True,blank=True)
     def __str__(self):
-        return f"Autor: {self.autor} - Titulo: {self.title} - Fecha: {self.post_date} "
+        return f"Autor: {self.author} - Titulo: {self.title} - Fecha: {self.post_date} "
 
 class Request (models.Model):
     

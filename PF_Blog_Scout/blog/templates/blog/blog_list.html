@@ -1,0 +1,126 @@
+
+
+
+{% extends "home/index.html" %}
+{% load static %}
+{% block title %}
+Blogs 
+{% endblock %}
+{% block CuerpoDelTemplate %}
+
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'home/styles/bootstrap4/bootstrap.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'home/plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'home/plugins/video-js/video-js.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'home/styles/blog.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'home/styles/blog_responsive.css' %}">
+
+
+<div class="header_search_container">
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<div class="header_search_content d-flex flex-row align-items-center justify-content-end">
+					<form action="#" class="header_search_form">
+						<input type="search" class="search_input" placeholder="Search" required="required">
+						<button class="header_search_button d-flex flex-column align-items-center justify-content-center">
+							<i class="fa fa-search" aria-hidden="false"></i>
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>			
+</div>
+	
+	<!-- Home -->
+
+	<div class="home">
+		<div class="breadcrumbs_container">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="breadcrumbs">
+							<ul>
+								<li><a href="{% url 'home:Home' %}">Inicio</a></li>
+								<li>Blog</li>
+							</ul>
+						</div>
+					</div>
+					
+					<form action="/pages/search" class="header_search_form" method="GET">
+						<input type="search" name="all_search" class="search_input" placeholder="Search" required="required" id="course_code_or_name">
+						<button class="header_search_button d-flex flex-column align-items-center justify-content-center">
+							<i class="fa fa-search" aria-hidden="false"></i>
+						</button>
+					</form>
+					
+				</div>
+			</div>
+		</div>	
+				
+	</div>
+	<!-- Blog -->
+	{% if user.is_authenticated %}
+		<div class="row">
+			<div class="col text-center">
+				<div class="load_more trans_200"><a href="{% url 'blog:CreateBlog' %}">Crear Blog</a></div>
+			</div>
+		</div>
+	{% endif %}
+		<div class="blog">
+			<div class="container">	
+					<center>
+						<div class="row">
+							<div class="col">
+								<div class="blog_post_container">
+									{% if blog_list %}
+									{% for blog in blog_list %}
+									<!-- Blog Post -->
+									<div class="blog_post trans_200">
+										<div class="blog_post_image">
+											{% if blog.image %}
+											<a href="{% url 'blog:SingleBlog' blog.id %}"><img src={{blog.image.url}} alt=""></a>
+											{% endif %}
+										</div>
+										{{form.image.label}}
+										<div class="blog_post_body">
+											<div class="blog_post_title"><a href="{% url 'blog:SingleBlog' blog.id %}">{{blog.title}}</a></div>
+											<div class="blog_post_subtitle"><a>{{blog.subtitle}}</a></div>
+											<div class="blog_post_meta">
+												<ul>
+													<li><a href="search?author_search={{blog.author.id}}">{{blog.author.first_name}} {{blog.author.last_name}}</a></li>
+													<li>{{blog.post_date}}</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									{% endfor %}
+									{% endif %}
+								</div>
+							</div>
+						</div>
+					</center>
+				{% if all_objects %}
+				{% else %}
+				<div class="row">
+					<div class="col text-center">
+						<div class="load_more trans_200"><a href="{% url 'blog:Blogs' %}">ver todos</a></div>
+					</div>
+				</div>
+				{% endif %}
+			</div>
+		</div>
+
+
+	<script src="{% static 'home/js/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'home/styles/bootstrap4/popper.js' %}"></script>
+	<script src="{% static 'home/styles/bootstrap4/bootstrap.min.js' %}"></script>
+	<script src="{% static 'home/plugins/easing/easing.js' %}"></script>
+	<script src="{% static 'home/plugins/masonry/masonry.js' %}"></script>
+	<script src="{% static 'home/plugins/video-js/video.min.js' %}"></script>
+	<script src="{% static 'home/plugins/parallax-js-master/parallax.min.js' %}"></script>
+	<script src="{% static 'home/js/blog.js' %}"></script>
+
+{% endblock %}

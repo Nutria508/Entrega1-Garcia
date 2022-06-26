@@ -1,0 +1,65 @@
+{% extends "home/index.html" %}
+{% load static %}
+{% block title %}
+Eliminar Usuario
+{% endblock %}
+
+{% block CuerpoDelTemplate %}
+<link rel="stylesheet" type="text/css" href="{% static 'home/styles/bootstrap4/bootstrap.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'home/plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'home/plugins/video-js/video-js.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'home/styles/blog.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'home/styles/blog_responsive.css' %}">
+
+	
+	<!-- Home -->
+
+	<div class="home">
+		<div class="breadcrumbs_container">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="breadcrumbs">
+							<ul>
+								<li><a href="{% url 'home:Home' %}">Inicio</a></li>
+								<li><a href="{% url 'blog:Blogs' %}">Blog</a></li>
+                                <li>Eliminar Usuario</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>			
+	</div>
+
+	<!-- Blog -->
+    <p>Estás seguro de eliminar el Usuario: {{ user.username }}?</p>
+	<div class="blog">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="blog_post_container">
+                        <form action="" method="POST">
+                            {% csrf_token %}                        										
+							<div class="col text-center">
+                                <input type="submit" class="btn btn-primary" value="Si, eliminar.">
+                                <a class="btn btn-primary" href="{% url 'user:Users_list' %}" >Cancelar</a>
+                            </div>
+                        </form>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<script src="{% static 'home/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'home/styles/bootstrap4/popper.js' %}"></script>
+<script src="{% static 'home/styles/bootstrap4/bootstrap.min.js' %}"></script>
+<script src="{% static 'home/plugins/easing/easing.js' %}"></script>
+<script src="{% static 'home/plugins/masonry/masonry.js' %}"></script>
+<script src="{% static 'home/plugins/video-js/video.min.js' %}"></script>
+<script src="{% static 'home/plugins/parallax-js-master/parallax.min.js' %}"></script>
+<script src="{% static 'home/js/blog.js' %}"></script>
+
+{% endblock %}
+

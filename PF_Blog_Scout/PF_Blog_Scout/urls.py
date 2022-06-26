@@ -21,9 +21,10 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('blog/', include('blog.urls')),
-    path('home/', include('home.urls')),
-    path('user/', include('user.urls')),
+    path('pages/', include('blog.urls')),
+    path('', include('home.urls')),
+    path('accounts/', include('user.urls')),
+    path('chat/', include('chat.urls')),
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

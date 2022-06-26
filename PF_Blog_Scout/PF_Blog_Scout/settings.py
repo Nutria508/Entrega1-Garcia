@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'blog',
     'home',
     'user',
+    'ckeditor',
+    'chat',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'PF_Blog_Scout.urls'
@@ -131,3 +134,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Para imagenes
 MEDIA_URL='/media/'
 MEDIA_ROOT= os.path.join(BASE_DIR,'media')
+
+#ckeditor
+CKEDITOR_UPLOAD_PATH = "uploads/"
